@@ -1,8 +1,9 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Evamed</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 <main>
-    <section>
+    <section id="left">
         <header>
             <h1>EVAMED</h1>
             <p>Evaluaci&oacute;n ambiental de edificios</p>
@@ -21,7 +22,7 @@
             </span>
         </p>
     </section>
-    <section>
+    <section id="right">
         <header>
             {% block header %}{% endblock %}
         </header>

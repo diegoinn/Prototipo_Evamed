@@ -1,0 +1,36 @@
+/* Layout */
+
+html, body, main, section {
+    height: 100%;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+section {
+    flex: 1 1 50%;
+    text-align: center;
+}
+
+/* Styles */
+
+section#left {
+    color: white;
+    background-color: #9fc522;
+}
+
+section#right {
+    background-color: #ededed;
+}
+
+section#right > * {
+    width: 80%;
+    alignment: center;
+}
+
+input.access {
+    background-color: #edc903;
+}
