@@ -1,13 +1,13 @@
 import functools
 
+from flaskr.db import get_db
+from werkzeug.security import check_password_hash, generate_password_hash
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-from werkzeug.security import check_password_hash, generate_password_hash
 
-from flaskr.db import get_db
+bp = Blueprint('auth', __name__)
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 # Middleware
 @bp.before_app_request
@@ -18,8 +18,9 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
+            'SELECT * FROM user WHERE idUser = ?', (user_id,)
         ).fetchone()
+
 
 def login_required(view):
     @functools.wraps(view)
@@ -31,33 +32,49 @@ def login_required(view):
 
     return wrapped_view
 
+
 # Routes
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    # Cambiar endpoint
+    # return redirect(url_for(''))
+
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    # Validate request
     if request.method == 'POST':
-        username = request.form['username']
+        # Fetch data
+        fullName = request.form['fullName']
+        email = request.form['email']
+        enterprise = request.form['enterprise']
         password = request.form['password']
+        privacy = request.form['privacy']
         db = get_db()
         error = None
 
-        if not username:
-            error = 'Username is required.'
+        # Validate data
+        if not fullName:
+            error = 'Nombre completo requerido.'
+        elif not email:
+            error = 'Correo requerido.'
+        elif not enterprise:
+            error = 'Empresa o institución requerida.'
         elif not password:
-            error = 'Password is required.'
+            error = 'Contraseña requerida.'
+        elif not privacy:
+            error = 'Confirma términos y condiciones.'
         elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
+                'SELECT idUser FROM user WHERE email = ?', (email,)
         ).fetchone() is not None:
-            error = 'User {} is already registered.'.format(username)
+            error = 'El correo {} ya está registrado.'.format(email)
 
+        # Create user
         if error is None:
             db.execute(
-                'INSERT INTO user (username, password) VALUES (?, ?)',
-                (username, generate_password_hash(password))
+                'INSERT INTO user (fullName, email, enterprise, password) VALUES (?, ?, ?, ?)',
+                (fullName, email, enterprise, generate_password_hash(password))
             )
             db.commit()
             return redirect(url_for('auth.login'))
@@ -69,24 +86,28 @@ def register():
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+    # Validate request
     if request.method == 'POST':
-        username = request.form['username']
+        # Fetch data
+        email = request.form['email']
         password = request.form['password']
         db = get_db()
         error = None
         user = db.execute(
-            'SELECT * FROM user WHERE username = ?', (username,)
+            'SELECT * FROM user WHERE email = ?', (email,)
         ).fetchone()
 
-        if user is None:
-            error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
+        # Validate data
+        if user is None or not check_password_hash(user['password'], password):
+            error = 'Correo o contraseña incorrecta.'
 
+        # Redirect
         if error is None:
             session.clear()
-            session['user_id'] = user['id']
-            return redirect(url_for('index'))
+            session['user_id'] = user['idUser']
+
+            # Cambiar endpoint
+            # return redirect(url_for(''))
 
         flash(error)
 

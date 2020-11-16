@@ -1,19 +1,19 @@
 DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS project;
 
 CREATE TABLE user (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL,
-  empresa TEXT NOT NULL,
-  correo TEXT NOT NULL
+  idUser INTEGER PRIMARY KEY AUTOINCREMENT,
+  fullName TEXT UNIQUE NOT NULL,
+  email TEXT NOT NULL,
+  enterprise TEXT NOT NULL,
+  password TEXT NOT NULL
 );
 
-CREATE TABLE Proyectos (
-  idProyecto INTEGER PRIMARY KEY AUTOINCREMENT,
-  idUsuario INTEGER,
-  Nombre TEXT NOT NULL,
-  Uso TEXT
-  Archivo Text,
-  FOREIGN KEY(idUsuario) REFERENCES user(idUsuario)
-)
+CREATE TABLE project (
+  idProject INTEGER PRIMARY KEY AUTOINCREMENT,
+  idUser INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  use TEXT,
+  file TEXT,
+  FOREIGN KEY(idUser) REFERENCES user(idUser)
+);

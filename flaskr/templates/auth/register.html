@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
+  <p>{% block title %}Registro{% endblock %}</p>
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register">
-  </form>
+    <form method="post" id="register">
+        <label for="fullName">Nombre completo</label>
+        <input name="fullName" id="fullName" required>
+        <label for="email">Correo electr&oacute;nico</label>
+        <input name="email" id="email" required>
+        <label for="enterprise">Instituci&oacute;n o empresa</label>
+        <input name="enterprise" id="enterprise" required>
+        <label for="password">Contrase&ntilde;a</label>
+        <input type="password" name="password" id="password" minlength="5" required>
+
+        <input type="checkbox" id="news" name="news">
+        <label for="news">Deseo recibir informaci&oacute;n sobre EVAMED y actualizaciones</label><br>
+        <input type="checkbox" id="privacy" name="privacy" required>
+        <label for="privacy">He le&iacute;do y acepto los t&eacute;rminos y condiciones sobre el manejo de privacidad</label>
+
+        <input type="submit" value="Enviar registro" class="access">
+    </form>
+    <div>
+        <p>¿Ya tienes cuenta?</p>
+        <a href="{{ url_for('auth.login') }}">Inicia sesi&oacute;n aqu&iacute;</a>
+    </div>
 {% endblock %}
