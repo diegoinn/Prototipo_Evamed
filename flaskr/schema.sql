@@ -4,5 +4,16 @@ DROP TABLE IF EXISTS post;
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  empresa TEXT NOT NULL,
+  correo TEXT NOT NULL
 );
+
+CREATE TABLE Proyectos (
+  idProyecto INTEGER PRIMARY KEY AUTOINCREMENT,
+  idUsuario INTEGER,
+  Nombre TEXT NOT NULL,
+  Uso TEXT
+  Archivo Text,
+  FOREIGN KEY(idUsuario) REFERENCES user(idUsuario)
+)
