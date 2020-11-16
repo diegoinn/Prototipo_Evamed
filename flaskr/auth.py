@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from flaskr.db import get_db
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint('auth', __name__)
 
 # Middleware
 @bp.before_app_request
@@ -78,10 +78,8 @@ def login():
             'SELECT * FROM user WHERE username = ?', (username,)
         ).fetchone()
 
-        if user is None:
-            error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
+        if user is None or not check_password_hash(user['password'], password):
+            error = 'Incorrect username or password.'
 
         if error is None:
             session.clear()
