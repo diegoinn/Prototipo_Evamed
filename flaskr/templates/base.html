@@ -1,24 +1,33 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Flaskr</h1>
-  <ul>
-    {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
-  </ul>
-</nav>
-<section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
-  {% block content %}{% endblock %}
-</section>
+<title>{% block title %}{% endblock %} - Evamed</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<main>
+    <section>
+        <header>
+            <h1>EVAMED</h1>
+            <p>Evaluaci&oacute;n ambiental de edificios</p>
+        </header>
+        <h2>Bienvenido</h2>
+        <p>
+            <span>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam corporis cupiditate dignissimos
+                distinctio esse iste iusto laboriosam laudantium, minima molestias neque nostrum nulla obcaecati optio,
+                praesentium reiciendis reprehenderit repudiandae sed?
+            </span>
+            <span>
+                A ad aliquid amet animi aspernatur autem beatae doloribus ex excepturi, expedita explicabo incidunt
+                maiores maxime molestiae mollitia obcaecati ratione reiciendis sed sunt suscipit temporibus veritatis
+                voluptatibus! Magnam, omnis, perspiciatis?
+            </span>
+        </p>
+    </section>
+    <section>
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        {% for message in get_flashed_messages() %}
+            <div>{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </section>
+</main>

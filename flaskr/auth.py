@@ -1,13 +1,13 @@
 import functools
 
+from flaskr.db import get_db
+from werkzeug.security import check_password_hash, generate_password_hash
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
-from werkzeug.security import check_password_hash, generate_password_hash
-
-from flaskr.db import get_db
 
 bp = Blueprint('auth', __name__)
+
 
 # Middleware
 @bp.before_app_request
@@ -21,6 +21,7 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
+
 def login_required(view):
     @functools.wraps(view)
     def wrapped_view(**kwargs):
@@ -31,11 +32,13 @@ def login_required(view):
 
     return wrapped_view
 
+
 # Routes
 @bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
@@ -50,7 +53,7 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHERE username = ?', (username,)
+                'SELECT id FROM user WHERE username = ?', (username,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
