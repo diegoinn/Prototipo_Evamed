@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for, session
 )
 from werkzeug.exceptions import abort
 
@@ -11,4 +11,5 @@ bp = Blueprint('proyectos', __name__)
 @bp.route('/')
 @login_required
 def index():
-    return 'Hello, World!'
+    nombre = session.get('user_fullName')
+    return render_template('proyectos/proyectos.html',Nombre=nombre)

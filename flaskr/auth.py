@@ -38,7 +38,7 @@ def login_required(view):
 def logout():
     session.clear()
     # Cambiar endpoint
-    # return redirect(url_for(''))
+    return redirect(url_for(''))
 
 
 @bp.route('/register', methods=('GET', 'POST'))
@@ -105,7 +105,8 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['idUser']
-
+            session['user_fullName'] = user['fullName']
+ 
             # Cambiar endpoint
             return redirect(url_for('index'))
 
