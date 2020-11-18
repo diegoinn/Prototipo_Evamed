@@ -6,7 +6,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 
-bp = Blueprint('auth', __name__)
+bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 # Middleware
@@ -107,7 +107,7 @@ def login():
             session['user_id'] = user['idUser']
 
             # Cambiar endpoint
-            # return redirect(url_for(''))
+            return redirect(url_for('index'))
 
         flash(error)
 

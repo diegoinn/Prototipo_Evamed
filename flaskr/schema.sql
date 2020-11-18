@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS project;
 
 CREATE TABLE user (
   idUser INTEGER PRIMARY KEY AUTOINCREMENT,
-  fullName TEXT UNIQUE NOT NULL,
-  email TEXT NOT NULL,
+  fullName TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
   enterprise TEXT NOT NULL,
   password TEXT NOT NULL
 );
