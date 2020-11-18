@@ -5,9 +5,59 @@
 
 {% block content %}
 
-<div class="container">
-    
-</div>
+<!-- <div class="container">
+</div> -->
 
+<div class="row">
+    <div class="col s8">
+        <div class="row">
+            <div class="col s10 offset-s1">
+                <h3 class="light-green-text accent-2-text">Tus Proyectos</h3>
+                <div class="divider"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s10 offset-s1">
+                {{ Proyectos }}
+            </div>
+        </div>
+    </div>
+    <div class="col s3">
+        <div class="row">
+            <div class="col s11 ">
+                <div class="card">
+                    <div class="row"></div>
+                    <div class="row">
+                        <div class="col s4 offset-s4">
+                            <img src="https://picsum.photos/500/500?random=1" alt="Imagen Usuario" class="circle responsive-img z-depth-1" >
+                        </div>
+
+                        <div class="col s4 offset-s4 center-align">
+                            {{ Nombre }}
+                        </div>
+                    </div>
+                    <div class="divider"></div>                    
+
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="row">
+                                <h5 class="center-align col s12">{{NumProyectos}}</h5>
+                                <div class="center-align col s12">Proyectos</div>
+                            </div>
+                        </div>
+                        <div class="col s6"></div>
+                        <div class="divider col s12"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s8 offset-s2 center-align">
+                            <a class="waves-effect waves-light btn ">Nuevo Proyecto</a>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

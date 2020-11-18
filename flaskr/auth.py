@@ -38,7 +38,7 @@ def login_required(view):
 def logout():
     session.clear()
     # Cambiar endpoint
-    return redirect(url_for(''))
+    return redirect(url_for('index'))
 
 
 @bp.route('/register', methods=('GET', 'POST'))
