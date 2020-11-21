@@ -18,10 +18,30 @@
         </div>
         <div class="row">
             <div class="col s10 offset-s1">
-                {{ Proyectos }}
+                <div class="row">
+                    {% for proyecto in Proyectos %}
+                        <div class="col s4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="http://placeimg.com/300/300/arch?random={{proyecto['idProject']}}">
+                                    <a class="btn-floating halfway-fab waves-effect waves-light red" href={{ url_for('proyectos.proyecto', idProyecto = proyecto[ 'idProject' ] ) }}><i class="material-icons">remove_red_eye</i></a>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator">{{proyecto['name']}}</span>
+                                    <p class="truncate activator">{{proyecto['description']}}</p>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title activator">{{proyecto['name']}}</span>
+                                    <p class="activator">{{proyecto['description']}}</p>
+                                </div>
+                              </div>
+                        </div>
+                    {% endfor%}
+                </div>
             </div>
         </div>
     </div>
+    
     <div class="col s3">
         <div class="row">
             <div class="col s11 ">
@@ -50,7 +70,7 @@
                     </div>
                     <div class="row">
                         <div class="col s8 offset-s2 center-align">
-                            <a class="waves-effect waves-light btn ">Nuevo Proyecto</a>
+                            <a class="waves-effect waves-light btn modal-trigger" href="#creaProyecto">Nuevo Proyecto</a>
                         </div>
                     </div>
                     <div class="row"></div>
@@ -59,5 +79,48 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal" id="creaProyecto">
+    <div class="modal-content">
+        <form action={{ url_for('proyectos.creaProyecto') }} method="post">
+            <div class="row">
+                <h5 class="light-green-text accent-2-text">Nuevo Proyecto</h5>
+                <div class="divider"></div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 offset-s3">
+                    <input  id="nombre_proyecto" name="nombre_proyecto" type="text" class="validate" required>
+                    <label for="nombre_proyecto">Nombre del Proyecto</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="descripcion_proyecto"  name="descripcion_proyecto" class="materialize-textarea"></textarea>
+                    <label for="descripcion_proyecto">Descripción del Proyecto</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4 center-align offset-s2">
+                    <a class="waves-effect waves-light red btn modal-close" href="#!" >Cancelar</a>
+                </div>
+                <div class="col s4 center-align">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
 
 {% endblock %}

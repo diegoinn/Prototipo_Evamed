@@ -13,7 +13,7 @@ CREATE TABLE project (
   idProject INTEGER PRIMARY KEY AUTOINCREMENT,
   idUser INTEGER NOT NULL,
   name TEXT NOT NULL,
-  use TEXT,
-  file TEXT,
+  description TEXT,
+  fecha datetime,
   FOREIGN KEY(idUser) REFERENCES user(idUser)
 );
