@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 
+# -*- coding: utf-8 -*-
 
 def create_app(test_config=None):
     # create and configure the app

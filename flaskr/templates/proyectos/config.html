@@ -1,10 +1,57 @@
 {% extends 'proyectos/base.html' %}
 
+
 {% block title %}Configuración {{ proyecto['name'] }}{% endblock %}
 
 
-{% block content %}{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col s10 offset-s1">
+
+        <div class="card" style="min-height: 75vh;">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a class="active" href="#DivMateriales">Materiales</a></li>
+                        <li class="tab col s3"><a href="#DivConstruccion">Construcción</a></li>
+                        <li class="tab col s3"><a href="#DivUso">Uso</a></li>
+                        <li class="tab col s3 disabled"><a href="#DivFinDeVida">Fin de vida</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Div con carga de Materiales -->
+            <div id="DivMateriales" style="height: 68vh; width: 100%;">
+                {% include 'proyectos/configMateriales.html' %}
+            </div>
+
+            <!-- Div con carga de Construcción -->
+            <div id="DivConstruccion" class="col s12"  style="height: 68vh; width: 100%;">
+                {% include 'proyectos/configConstruccion.html' %}
+            </div>
+
+            <!-- Div con carga de Uso -->
+            <div id="DivUso" class="col s12"  style="height: 68vh; width: 100%;">
+
+            </div>
+
+            <!-- Div con carga de Fin de vida -->
+            <div id="DivFinDeVida" class="col s12">
+                <!-- TODO  Impementar fin de vida -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red waves-effect waves-light" id='GuardarProyecto'>
+      <i class="large material-icons">save</i>
+    </a>
+    
+ </div>
+        
+
+{% endblock %}
 
 {% block scripts %}
-<script src="/js/configProyecto.js"></script>
+<script src="/static/js/configProyecto.js"></script>
 {% endblock %}

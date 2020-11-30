@@ -1,0 +1,188 @@
+<div id="ConfiguraMateriales" style="height: 100%;">
+    <div class="row" style="height: 100%; margin:0px;">
+        <div class="col s4" style="height: 100%; border-right: 1px solid #ccc;">
+            <div class="row center-align grey-text">
+
+                <h6> Elementos Constructivos &nbsp <i class="material-icons "
+                        style="vertical-align: middle !important;">business</i> </h6>
+            </div>
+            <div class="divider"></div>
+            <div class="row" style="height: 58vh; margin:0px; overflow-y: auto; ">
+                <table class="highlight centered">
+                    <tbody id="ElementosConst">
+                        <tr>
+                            <td>
+                                TODOS
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col s4" style="height: 100%;border-right: 1px solid #ccc;">
+            <div class="row center-align grey-text">
+                <h6>Systemas Constructivos &nbsp <i class="material-icons "
+                        style="vertical-align: middle !important;">build</i></h6>
+            </div>
+            <div class="divider"></div>
+            <div class="row" style="height: 58vh; margin:0px; overflow-y: auto; ">
+                <table class="highlight centered">
+                    <tbody id="SistemasConst">
+                        <tr>
+                            <td>
+                                TODOS
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col s4" style="height: 100%; ">
+            <!-- seleccion de material que se desa Editar -->
+            <div id='SeleccionMaterial' style="width: 100%; height: 100%;">
+                <div class="row center-align grey-text">
+                    <h6>Materiales <i class="material-icons " style="vertical-align: middle !important;">filter_hdr</i>
+                    </h6>
+                </div>
+                <div class="divider"></div>
+
+                <div class="row" style="height: 58vh; margin:0px; overflow-y: auto; ">
+                    <table class="highlight centered">
+                        <tbody id="Materiales">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- edicion del material seleccionado -->
+            <div id="edicionMaterial" style="width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden;">
+                <div class="row center-align grey-text">
+                    <div class="col s10 offset-s1">
+                        <h6>
+                            <i id="CancelaeMaterial" class="material-icons left tooltipped" data-position="top"
+                                data-tooltip="Cancelar" style="vertical-align: middle !important;">arrow_back</i>
+                            Editar Material <i class="material-icons "
+                                style="vertical-align: middle !important;">mode_edit</i>
+                            <i id='GuardaMaterial' class="material-icons right tooltipped" data-position="top"
+                                data-tooltip="Guardar" style="vertical-align: middle !important;">save</i>
+                        </h6>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        Material: <span id="NombreMaterial">nombre material</span>
+                    </div>
+                    <div class="col s12 center-align">
+                        Sistema Constructivo: <span id="SCMaterial">SC material</span>
+                    </div>
+                    <div class="col s12 center-align">
+                        Elemento Constructivo: <span id="ECMaterial">EC material</span>
+                    </div>
+                </div>
+
+                <div class="row" id='DivCantidad'>
+                    <div class="input-field col s6 offset-s1">
+                        <input placeholder="0" id="CantidadMaterial" type="text">
+                        <label for="CantidadMaterial">Cantidad</label>
+                    </div>
+                    <div class="input-field col s3 offset-s1">
+                        <select id='UnidadMaterial'>
+                            <option value="" disabled selected>---</option>
+                            {% for unidad in unidades %}
+                                <option value="{{unidad}}">{{unidad}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Unidad</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 offset-s1">
+                        <select id='TipoTransporte'>
+                            <option value="" disabled selected>---</option>
+                            {% for transporte in transportes %}
+                                <option value="{{transporte}}">{{transporte}}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Tipo de Transporte</label>
+                    </div>
+                    <div class="input-field col s3 offset-s1">
+                        <input placeholder="0" id="DistanciaTransporte" type="text">
+                        <label for="DitanciaTransporte">Distancia (km)</label>
+                    </div>
+                </div>
+
+                <div class="row center-align">
+                    <div class="col s12">
+                        Material Base de Datos : <span id='MaterialDB'>---</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="input-field col s10 offset-s1">
+                        <input placeholder="" id="buscaMaterial" type="text">
+                        <label for="buscaMaterial">Buscar Base de Datos</label>
+                    </div>
+                </div>
+                {% for material in materiales %}
+                <div class="row busqueda-material hoverable" style="border-top: 1px solid #ddd; margin:0px; padding: 0px;; min-height: 40px;">
+                    <div class="col s10 center-align nombre-material">
+                        {{material.Material}}
+                    </div>
+                    <div class="col s2 center-align">
+                        {{material.Unidad}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="CargarArchivo" style="height: 100%;">
+    <div class="valign-wrapper" style="width:100%;height:100%;position: absolute;">
+        <div class="valign" style="width:100%;">
+            <div class="container">
+
+                <div class="card center-align">
+                    <div class="row"></div>
+                    <h5 class="card-title light-green-text accent-2-text ">
+                        Cargar Archivo de Materiales
+                    </h5>
+                    <p>
+                        <i class="large material-icons light-green-text accent-2-text">cloud_upload</i>
+                    </p>
+                    <div class="row">
+                        <div class="col s7 offset-s1">
+                            <div class="file-field input-field ">
+                                <div class="btn">
+                                    <span>Selecciona Archivo</span>
+                                    <input type="file" id="Archivo">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s3">
+                            <div class=" input-field " id='SubirArchivo'>
+                                <a class="waves-effect waves-light btn-large"><i
+                                        class="material-icons right">file_upload</i>Cargar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id='ContConfigExistente'>
+                        <div class="col s12 center-align">
+                            <div class=" input-field " id='ConfigExistente'>
+                                <a class="waves-effect waves-light btn-large">Usar Configuración existente</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

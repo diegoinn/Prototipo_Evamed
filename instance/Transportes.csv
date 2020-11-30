@@ -1,0 +1,15 @@
+﻿Categoría de impacto,Abreviación,Unidad,"Transporte por oceano, Buque carguero (GLO)-Ecoinvent 3","Transporte por oceano, contenedores (GLO)-Ecoinvent 3",Vehículo de carga comercial ligera (GLO)-Ecoinvent 3,"Vehículo de carga, mayor a 32 Ton, tipo EURO 3 (RoW)-Ecoinvent 3","Vehículo de carga, entre  16 y 32 Ton, tipo EURO 3 (RoW)-Ecoinvent 3","Vehículo de carga, entre  3.5 y 7.5 Ton, tipo EURO 3 (RoW)-Ecoinvent 3","Vehículo de carga, entre  7.5 y 16 Ton, tipo EURO 3 (RoW)-Ecoinvent 3"
+Potencial de Agotamiento de Recursos Abióticos Minerales ,PAAe,kg SB eq,6.01E-08,7.00E-08,4.09E-05,1.58E-06,4.56E-06,2.55E-05,7.80E-06
+Potencial de Agotamiento de Recursos Abióticos Fósiles ,PAAf,MJ,0.0829,0.12,26,1.44,2.55,7.74,3.26
+Potencial de Calentamiento Global,PCG 100,kg CO2 eq,0.0065,0.00934,1.84,0.0936,0.172,0.541,0.224
+Potencial de Agotamiento de la Capa de Ozono,PAO,kg CFC-11 eq,1.03E-09,1.50E-09,2.96E-07,1.72E-08,3.02E-08,8.84E-08,3.82E-08
+Potencial de Oxidación Fotoquímica,PFOF,kg C2H4,4.30E-06,6.38E-06,0.000694,1.41E-05,2.68E-05,8.80E-05,3.51E-05
+Potencial de Acidificación,PA,kg SO2 eq,0.000154,2.45E-04,0.0082,4.85E-04,8.72E-04,2.59E-03,1.10E-03
+Potencial de Eutrofización,PE,kg PO4 eq,1.60E-05,2.74E-05,0.00228,1.16E-04,2.11E-04,6.54E-04,2.70E-04
+Potencial de escasez de agua,EA,m3 eq,0.000159,0.000189,0.126,5.40E-03,8.56E-03,3.24E-02,1.19E-02
+Potencial de Formación de Ozono Troposférico,POT,"kg Nox, kg O3, o kg etano",,,,,,,
+Potencial de Agotamiento de recursos energéticos no renovables ,PARNR,MJ,,,,,,,
+Human toxicity,,"kg 1,4-DB eq",0.00323,0.00432,1.89,0.0454,0.0766,0.26,1.01E-01
+Fresh water aquatic ecotox.,,"kg 1,4-DB eq",0.000887,0.00107,1.19,0.0137,0.0294,0.135,0.0452
+Marine aquatic ecotoxicity,,"kg 1,4-DB eq",1.94,2.53,1.74E+03,31.1,61.5,264,91.3
+Terrestrial ecotoxicity,,"kg 1,4-DB eq",1.16E-05,1.55E-05,0.00335,0.000148,0.000255,0.000874,0.000338
