@@ -24,7 +24,7 @@
                             <div class="card">
                                 <div class="card-image">
                                     <img src="http://placeimg.com/300/300/arch?random={{proyecto['idProject']}}">
-                                    <a class="btn-floating halfway-fab waves-effect waves-light red" href={{ url_for('proyectos.proyecto', idProyecto = proyecto[ 'idProject' ] ) }}><i class="material-icons">remove_red_eye</i></a>
+                                    <!-- <a class="btn-floating halfway-fab waves-effect waves-light red" href={{ url_for('proyectos.proyecto', idProyecto = proyecto[ 'idProject' ] ) }}><i class="material-icons">remove_red_eye</i></a> -->
                                 </div>
                                 <div class="card-content">
                                     <span class="card-title activator">{{proyecto['name']}}</span>
@@ -34,7 +34,11 @@
                                     <span class="card-title activator">{{proyecto['name']}}</span>
                                     <p class="activator">{{proyecto['description']}}</p>
                                 </div>
-                              </div>
+                                <div class="card-action">
+                                    <a href={{ url_for('proyectos.proyecto', idProyecto = proyecto[ 'idProject' ] ) }}><i class="material-icons">insert_chart</i> </a>
+                                    <a href={{ url_for('proyectos.configuraProyecto', idProyecto = proyecto[ 'idProject' ] ) }}><i class="material-icons">edit</i> </a>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
@@ -89,9 +93,18 @@
                 <div class="divider"></div>
             </div>
             <div class="row">
-                <div class="input-field col s6 offset-s3">
+                <div class="input-field col s5 offset-s1">
                     <input  id="nombre_proyecto" name="nombre_proyecto" type="text" class="validate" required>
                     <label for="nombre_proyecto">Nombre del Proyecto</label>
+                </div>
+                <div class="input-field col s4 offset-s1">
+                    <Select name = 'clonar' id="clonar">
+                        <option value="-1">No clonar</option>
+                    {% for proyecto in Proyectos %}
+                        <option value="{{proyecto.idProject}}">{{proyecto.name}}</option>
+                    {% endfor%}
+                    </Select>
+                    <label >Clonar Proyecto</label>
                 </div>
             </div>
             <div class="row">
@@ -120,6 +133,8 @@
     
   $(document).ready(function(){
     $('.modal').modal();
+    $('select').formSelect({ dropdownOptions: { container: document.body } });
+
   });
 </script>
 

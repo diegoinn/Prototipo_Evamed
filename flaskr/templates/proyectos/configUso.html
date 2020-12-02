@@ -1,0 +1,21 @@
+<div id="configUso" style="width: 100%; height: 100%; overflow-y:auto; overflow-x: hidden;">
+    <div class="row energia">
+        <div class=" input-field  col s6 offset-s1 ">
+            <select class="fuente">
+                <option value="" disabled selected>---</option>
+                {% for energia in energias %}
+                <option value="{{energia}}">{{energia}}</option>
+                {% endfor %}
+            </select>
+            <label>Fuentes de Energia</label>
+        </div>
+        <div class=" input-field col s3">
+            <input placeholder="0"  type="text" class="SoloNumeros Horas">
+            <label >Gasto Anual (kWh)</label>
+        </div>
+    </div>
+    <div class="row center-align" id='ContAgregaEnergia'>
+        <a class="btn-floating btn-large waves-effect waves-light red" id='agregaEnergia'><i class="material-icons">add</i></a>
+    </div>
+
+</div>

@@ -6,11 +6,16 @@ let uso = [];
 let SeleccionEC = null;
 let SeleccionSC = null;
 let SeleccionMaterial = null;
-
+let maquinaTemplate = null;
+let energiaTemplate = null;
 $(document).ready(function () {
     //inicializa js de Materialize
     $('.tabs').tabs();
     $('.tooltipped').tooltip();
+
+    maquinaTemplate = $($('.maquina')[0]).clone()
+    energiaTemplate = $($('.energia')[0]).clone()
+
     $('select').formSelect({ dropdownOptions: { container: document.body } });
 
 
@@ -21,8 +26,7 @@ $(document).ready(function () {
 
     $('.busqueda-material').click(selecionaMaterialDB);
     $('#buscaMaterial').keyup(buscaMaterial);
-    $('#CantidadMaterial').keyup(soloNumeros);
-    $('#DistanciaTransporte').keyup(soloNumeros);
+    $('.SoloNumeros').keyup(soloNumeros);
 
     $('#CancelaeMaterial').click(cancelarMaterial);
     $('#GuardaMaterial').click(guardarMaterial);
@@ -34,8 +38,101 @@ $(document).ready(function () {
 
     $('#GuardarProyecto').click(guardarEnBase)
     
+    $('#agregaMaquina').click(agregaMaquina)
+    $('#agregaEnergia').click(agregaEnergia)
+
     getConfigExistente();
 });
+
+function agregaMaquina(){
+    let nueva = maquinaTemplate.clone()
+    $("#ContAgregaMaquina").before(nueva);
+    $('select').formSelect({ dropdownOptions: { container: document.body } });
+}
+
+function agregaEnergia(){
+    let nueva = energiaTemplate.clone()
+    $("#ContAgregaEnergia").before(nueva);
+    $('select').formSelect({ dropdownOptions: { container: document.body } });
+}
+
+function cargaDatosUso(){
+    if (uso.length == 0){
+        return;
+    }
+    $('.energia').remove();
+    uso.forEach(element => {
+        let nueva = energiaTemplate.clone()
+        nueva.find('.fuente').val(element.fuente)
+        nueva.find('.Horas').val(element.horas)
+        $("#ContAgregaEnergia").before(nueva);
+    });
+    $('select').formSelect({ dropdownOptions: { container: document.body } });
+}
+
+function cargaDatosConstruccion(){
+    if (construccion.length == 0){
+        return;
+    }
+    $('.maquina').remove();
+    construccion.forEach(element => {
+        let nueva = maquinaTemplate.clone()
+        nueva.find('.maquinaria').val(element.maquina)
+        nueva.find('.Horas').val(element.horas)
+        $("#ContAgregaMaquina").before(nueva);
+    });
+    $('select').formSelect({ dropdownOptions: { container: document.body } });
+
+}
+
+function guardaConstruccion(){
+    construccion = []
+    $('.maquina').each(function(){
+        maquina = $(this);
+
+        maquinaria = maquina.find('.maquinaria').val()
+        horas =  maquina.find('.Horas').val()
+        horasF = 0;
+        try{
+            horasF = parseFloat(horas);
+        }catch{
+            horasF=0;
+        }
+        if (maquinaria==null || maquinaria.trim() == '' ){
+
+            return;
+        }
+        if(horasF == 0 || Number.isNaN(horasF)){
+            return;
+        }
+        construccion.push({'maquina':maquinaria, 'horas':horasF});
+    });
+}
+
+
+function guardaUso(){
+    uso = []
+    $('.energia').each(function(){
+        energia = $(this);
+
+        fuente = energia.find('.fuente').val()
+        horas =  energia.find('.Horas').val()
+        horasF = 0;
+        try{
+            horasF = parseFloat(horas);
+        }catch{
+            horasF=0;
+        }
+        if (fuente==null ||fuente.trim() == ''){
+
+            return;
+        }
+        if(horasF == 0 || Number.isNaN(horasF)){
+            return;
+        }
+        uso.push({'fuente':fuente, 'horas':horasF});
+    });
+}
 
 function getConfigExistente(){
     
@@ -70,6 +167,9 @@ function getConfigExistente(){
 
 function guardarEnBase(){
     console.log('Guardando Configuración')
+
+    guardaConstruccion();
+    guardaUso();
 
     if(datos.length==0 && construccion.length==0 && uso.length==0){
         M.toast({html: 'Configurar el proyecto antes de Guardar'});
@@ -144,7 +244,6 @@ function selecionaMaterialDB() {
 }
 
 function guardarMaterial() {
-    console.log('guardando datos de material');
     let cantidad = $('#CantidadMaterial').val();
     let unidad = $('#UnidadMaterial').val();
     let tipoTrasporte = $('#TipoTransporte').val();
@@ -166,9 +265,17 @@ function guardarMaterial() {
             element.Cantidad = cantidad;
             element.Unidad = unidad;
         }
+
+        distanciaTransporteF = 0
+
+        try{
+            distanciaTransporteF = parseFloat(distanciaTransporte)
+        }catch{
+            distanciaTransporteF=0;
+        }
         
         element['Transporte'] = tipoTrasporte;
-        element['Distancia'] = distanciaTransporte;
+        element['Distancia'] = distanciaTransporteF;
         element['MaterialDB'] = materialDB;
     });
 
@@ -326,6 +433,8 @@ function seleccionaSC(e) {
 
 
 function cargaDatosMateriales() {
+    cargaDatosConstruccion();
+    cargaDatosUso();
     const EC = [...new Set(datos.map(item => item['Elemento Constructivo']))];
     const SC = [...new Set(datos.map(item => item['Sistema Constructivo']))];
     const material = [...new Set(datos.map(item => item['Material']))];

@@ -1,3 +1,21 @@
-<div id="configConstruccion" style="width: 100%; height: 100%; background-color: blue;">
+<div id="configConstruccion" style="width: 100%; height: 100%; overflow-y:auto; overflow-x: hidden;">
+    <div class="row maquina">
+        <div class=" input-field  col s6 offset-s1 ">
+            <select class="maquinaria">
+                <option value="" disabled selected>---</option>
+                {% for maquina in maquinas %}
+                <option value="{{maquina}}">{{maquina}}</option>
+                {% endfor %}
+            </select>
+            <label>Maquinaria usada</label>
+        </div>
+        <div class=" input-field col s3">
+            <input placeholder="0"  type="text" class="SoloNumeros Horas">
+            <label >Horas Trabajadas</label>
+        </div>
+    </div>
+    <div class="row center-align" id='ContAgregaMaquina'>
+        <a class="btn-floating btn-large waves-effect waves-light red" id='agregaMaquina'><i class="material-icons">add</i></a>
+    </div>
 
 </div>

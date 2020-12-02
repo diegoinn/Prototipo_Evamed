@@ -1,0 +1,15 @@
+﻿Categoría de impacto,Abreviación,Unidad,"Energía eléctrica, Alto voltaje (MX)","Energía eléctrica, Medio voltaje (MX)","Energía eléctrica, Bajo voltaje (MX)",Calefacción doméstica con gas natural (GLO)
+Potencial de Agotamiento de Recursos Abióticos Minerales ,PAAe,kg SB eq,1.76E-07,2.79E-07,6.63E-07,1.53E-07
+Potencial de Agotamiento de Recursos Abióticos Fósiles ,PAAf,MJ,2.04,2.09,2.34,1.15
+Potencial de Calentamiento Global,PCG 100,kg CO2 eq,0.158,0.162,0.182,0.0768
+Potencial de Agotamiento de la Capa de Ozono,PAO,kg CFC-11 eq,1.18E-08,1.20E-08,1.35E-08,9.56E-09
+Potencial de Oxidación Fotoquímica,PFOF,kg C2H4,2.60E-05,2.68E-05,3.09E-05,8.00E-06
+Potencial de Acidificación,PA,kg SO2 eq,0.000645,0.000664,0.000768,6.71E-05
+Potencial de Eutrofización,PE,kg PO4 eq,0.000268,0.000276,0.000319,1.51E-05
+Potencial de escasez de agua,EA,m3 eq,0.0144,0.0148,0.0168,0.000981
+Potencial de Formación de Ozono Troposférico,POT,"kg Nox, kg O3, o kg etano",,,,
+Potencial de Agotamiento de recursos energéticos no renovables ,PARNR,MJ,,,,
+Human toxicity,,"kg 1,4-DB eq",0.0446,0.0533,0.094,0.00944
+Fresh water aquatic ecotox.,,"kg 1,4-DB eq",0.0457,0.0575,0.122,0.00611
+Marine aquatic ecotoxicity,,"kg 1,4-DB eq",132,141,0.189,11.6
+Terrestrial ecotoxicity,,"kg 1,4-DB eq",0.00011,0.000302,0.000988,3.22E-05

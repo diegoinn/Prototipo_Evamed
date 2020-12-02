@@ -1,0 +1,15 @@
+﻿Categoría de impacto,Abreviación,Unidad,"Generador de energía eléctrica a base de Diesel, potencia menor a 18.64 kW (GLO)-Ecoinvent 3","Maquinaria de carga ligera a base de Diesel, potencia menor a 18.64 kW (GLO)-Ecoinvent 3","Maquinaria de carga pesada a base de Diesel, potencia menor a 18.64kW (GLO)-Ecoinvent 3","Generador de energía eléctrica a base de Diesel, potencia potencia entre 18.64 kW y 74.57 kW (GLO)-Ecoinvent 3","Maquinaria de carga ligera a base de Diesel, potencia entre 18.64 kW y 74.57 kW (GLO)-Ecoinvent 3","Maquinaria de carga pesada a base de Diesel, potencia entre 18.64 kW y 74.57 kW (GLO)-Ecoinvent 3","Generador de energía eléctrica a base de Diesel, potencia mayor a 74.57 kW (GLO)-Ecoinvent 3","Maquinaria de carga ligera a base de Diesel, potencia mayor a 74.57 kW (GLO)-Ecoinvent 3","Maquinaria de carga pesada a base de Diesel, potencia mayor a 74.57 kW (GLO)-Ecoinvent 3",Excavadora hidráulica (GLO),Banda transportadora (GLO)
+Potencial de Agotamiento de Recursos Abióticos Minerales ,PAAe,kg SB eq,1.84E-09,1.54E-09,2.67E-09,7.71E-09,5.31E-09,1.31E-08,2.95E-08,9.94E-09,6.28E-08,9.25E-07,2.50E-07
+Potencial de Agotamiento de Recursos Abióticos Fósiles ,PAAf,MJ,0.0164,0.0137,0.0238,0.0686,0.0473,0.117,0.263,0.0886,0.559,7.23,1.54
+Potencial de Calentamiento Global,PCG 100,kg CO2 eq,0.0012,0.001,0.00174,0.00501,0.00346,0.00852,0.0192,0.00647,0.0409,0.527,0.142
+Potencial de Agotamiento de la Capa de Ozono,PAO,kg CFC-11 eq,2.05E-10,1.72E-10,2.98E-10,8.60E-10,5.93E-10,1.46E-09,3.29E-09,1.11E-09,7.01E-09,8.90E-08,6.30E-09
+Potencial de Oxidación Fotoquímica,PFOF,kg C2H4,2.84E-07,2.13E-07,4.07E-07,9.67E-07,7.58E-07,1.52E-06,3.13E-06,1.00E-06,5.57E-06,9.47E-05,2.39E-05
+Potencial de Acidificación,PA,kg SO2 eq,5.54E-06,4.16E-06,7.96E-06,2.19E-05,1.12E-05,2.84E-05,8.48E-05,1.81E-05,1.32E-04,3.90E-03,6.04E-04
+Potencial de Eutrofización,PE,kg PO4 eq,1.29E-06,9.58E-07,1.86E-06,5.08E-06,2.49E-06,6.34E-06,1.97E-05,3.92E-06,2.94E-05,9.35E-04,2.70E-04
+Potencial de escasez de agua,EA,m3 eq,2.38E-05,2.00E-05,3.46E-05,9.98E-05,6.89E-05,1.70E-04,3.82E-04,1.29E-04,8.13E-04,1.54E-02,2.28E-02
+Potencial de Formación de Ozono Troposférico,POT,"kg Nox, kg O3, o kg etano",,,,,,,,,,,
+Potencial de Agotamiento de recursos energéticos no renovables ,PARNR,MJ,,,,,,,,,,,
+Human toxicity,,"kg 1,4-DB eq",0.000239,0.00195,0.000346,0.000955,0.000642,0.00154,0.00365,1.18E-03,0.00732,0.139,0.059
+Fresh water aquatic ecotox.,,"kg 1,4-DB eq",9.13E-05,7.62E-05,0.000133,0.00038,0.000262,0.000641,0.00145,0.000489,0.00307,0.0621,0.0594
+Marine aquatic ecotoxicity,,"kg 1,4-DB eq",0.178,0.149,0.259,0.747,0.515,1.27,2.86,0.963,6.08,114,219
+Terrestrial ecotoxicity,,"kg 1,4-DB eq",8.58E-07,7.02E-07,1.24E-06,3.43E-06,2.34E-06,5.59E-06,1.31E-05,4.34E-06,2.67E-05,4.87E-04,0.00028
